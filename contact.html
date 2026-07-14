@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Book a Consultation — PMC Build</title>
+<meta name="description" content="Book a consultation with PMC Build for construction consulting, project management, or owner representation in the South Okanagan, BC.">
+<link rel="canonical" href="https://www.pmcbuild.ca/contact.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .contact-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:64px; align-items:start;}
+  .contact-card{border:1px solid var(--line-strong); padding:40px;}
+  .contact-card h3{font-size:1.1rem; margin-bottom:8px;}
+  .contact-card p{margin-bottom:22px; font-size:0.95rem;}
+  .contact-card a.btn{width:100%; text-align:center;}
+  .contact-list{margin-top:28px;}
+  .contact-list .row{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--line);}
+  .contact-list .row span:first-child{font-family:var(--mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--stone-dim);}
+  .contact-list .row span:last-child{color:var(--stone);}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* Inquiry form */
+  .inquiry-form{border:1px solid var(--line-strong); padding:40px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .form-field{margin-bottom:20px;}
+  .form-field label{
+    display:block; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--stone-dim); margin-bottom:8px;
+  }
+  .form-field input, .form-field select, .form-field textarea{
+    width:100%; background:var(--charcoal); border:1px solid var(--line-strong);
+    color:var(--stone); font-family:var(--sans); font-size:0.95rem;
+    padding:13px 14px; transition:border-color .2s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{
+    outline:none; border-color:var(--bronze);
+  }
+  .form-field textarea{resize:vertical; min-height:110px;}
+  .form-honeypot{position:absolute; left:-9999px; top:-9999px;}
+  .form-submit{
+    width:100%; border:none; cursor:pointer;
+    font-family:var(--mono); font-size:0.78rem; letter-spacing:0.05em; text-transform:uppercase;
+    background:var(--bronze); color:var(--ink); padding:16px 28px; transition:background .2s;
+  }
+  .form-submit:hover{background:var(--bronze-bright);}
+  .form-submit:disabled{opacity:0.6; cursor:not-allowed;}
+  .form-note{margin-top:14px; font-size:0.82rem; color:var(--stone-dim);}
+  .form-status{
+    margin-top:18px; padding:14px 16px; font-size:0.9rem; display:none;
+    font-family:var(--mono);
+  }
+  .form-status.success{display:block; border:1px solid var(--bronze); color:var(--bronze-bright);}
+  .form-status.error{display:block; border:1px solid #8a4a3a; color:#d99a86;}
+  @media (max-width:560px){.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brandmark">PMC <span>BUILD</span></a>
+    <nav class="links">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="process.html">Process</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a href="contact.html" class="nav-cta">Book a Consultation</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="breadcrumb"><a href="index.html">Home</a> / Contact</span>
+    <span class="eyebrow" style="display:block; margin-top:22px;">Let's Talk</span>
+    <h1>Tell Us About Your Property.</h1>
+    <p>Every engagement starts with a conversation — no obligation, and no pressure. We'll tell you honestly whether PMC Build is the right fit for what you're trying to do.</p>
+  </div>
+</section>
+
+<section class="section-border" id="consultation">
+  <div class="wrap contact-grid">
+    <div>
+      <form id="inquiry-form" class="inquiry-form" action="https://formspree.io/f/mrenbzbe" method="POST">
+        <h3 style="font-family:var(--serif); font-size:1.4rem; margin-bottom:24px;">Send an Inquiry</h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-field">
+            <label for="location">Property Location</label>
+            <input type="text" id="location" name="location" placeholder="City or area">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="timeline">Timeline</label>
+          <select id="timeline" name="timeline">
+            <option value="Just exploring">Just exploring</option>
+            <option value="Within 3 months">Within 3 months</option>
+            <option value="3–6 months">3–6 months</option>
+            <option value="ASAP">ASAP</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">What are you trying to accomplish?</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_subject" value="New PMC Build Inquiry">
+        <button type="submit" class="form-submit">Send Inquiry</button>
+        <p class="form-note">We typically reply within one business day.</p>
+        <div class="form-status" id="form-status"></div>
+      </form>
+    </div>
+    <div class="contact-card">
+      <h3>Request a Project Review</h3>
+      <p>Already have quotes, plans, or a contractor's proposal? Email it over and we'll give you a straight assessment before you commit.</p>
+      <a href="mailto:pmcontracting2020@gmail.com?subject=Project%20Review%20Request" class="btn btn-ghost">Request a Review</a>
+      <div class="contact-list">
+        <div class="row"><span>Email</span><span>pmcontracting2020@gmail.com</span></div>
+        <div class="row"><span>Based In</span><span>South Okanagan, BC</span></div>
+        <div class="row"><span>Service Area</span><span>South Okanagan-Similkameen, province-wide</span></div>
+        <div class="row"><span>Licensing</span><span>Licensed &amp; Insured, BC</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brandmark">PMC <span>BUILD</span></a>
+        <p>Construction consulting, project management, and owner representation for the South Okanagan.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="process.html">Process</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="projects.html">Projects</a>
+        <a href="service-area.html">Service Area</a>
+        <a href="resources.html">Resources</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:pmcontracting2020@gmail.com">pmcontracting2020@gmail.com</a>
+        <p>South Okanagan, BC</p>
+        <a href="contact.html">Book a Consultation</a>
+      </div>
+    </div>
+    <div class="footer-row">
+      <span>&copy; 2026 PMC Build — a division of Pat Miazga Contracting Ltd. (BC1528503)</span>
+      <span>Licensed &amp; Insured, British Columbia</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  const inquiryForm = document.getElementById('inquiry-form');
+  if (inquiryForm) {
+    const statusBox = document.getElementById('form-status');
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = inquiryForm.querySelector('.form-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      statusBox.className = 'form-status';
+
+      try {
+        const response = await fetch(inquiryForm.action, {
+          method: 'POST',
+          body: new FormData(inquiryForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          inquiryForm.reset();
+          statusBox.textContent = "Thanks — your inquiry is in. We'll be in touch shortly.";
+          statusBox.classList.add('success');
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        statusBox.textContent = "Something went wrong sending that. Please email us directly at pmcontracting2020@gmail.com.";
+        statusBox.classList.add('error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Inquiry';
+      }
+    });
+  }
+</script>
+</body>
+</html>
