@@ -142,6 +142,26 @@ section{padding:120px 0; position:relative;}
   background-size:cover;
   background-position:center 65%;
 }
+.hero-split{
+  position:absolute; inset:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.hero-pane{
+  position:relative;
+  background-size:cover;
+  background-position:center;
+}
+.hero-pane::after{
+  content:"";
+  position:absolute; inset:0;
+  background:rgba(13,12,11,0.22);
+}
+.hero-pane + .hero-pane{box-shadow:-2px 0 0 var(--bronze);}
+@media (max-width:760px){
+  .hero-split{grid-template-columns:1fr;}
+  .hero-split .hero-pane:last-child{display:none;}
+}
 .hero-scrim{
   position:absolute; inset:0;
   background:
