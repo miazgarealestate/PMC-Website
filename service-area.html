@@ -11,11 +11,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-  .area-detail{padding:36px 0; border-top:1px solid var(--line);}
-  .area-detail:first-child{border-top:none;}
-  .area-detail h3{font-size:1.3rem;}
-  .area-detail p{margin-top:10px; max-width:65ch;}
+  .map-wrap{position:relative; border:1px solid var(--line-strong); background:var(--charcoal);}
+  #service-map{height:560px; width:100%; background:#14120f;}
+  .map-legend{display:flex; flex-wrap:wrap; gap:10px 28px; padding:16px 20px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--stone-dim);}
+  .map-legend i{display:inline-block; width:14px; height:14px; margin-right:9px; vertical-align:-2px;}
+  .lg-core{background:rgba(201,154,104,0.38); border:1px solid var(--bronze-bright);}
+  .lg-ext{border:1px dashed var(--bronze-bright);}
+  .lg-home{background:var(--bronze-bright); border-radius:50%;}
+  .leaflet-tooltip.town{background:rgba(13,12,11,0.88); color:var(--stone); border:1px solid var(--bronze); border-radius:0; box-shadow:none; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.05em; text-transform:uppercase; padding:3px 8px;}
+  .leaflet-tooltip.town:before{display:none;}
+  .leaflet-container{font-family:var(--sans);}
+  .coverage{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .coverage > div{background:var(--ink); padding:34px;}
+  .coverage h3{font-size:1.15rem; margin-bottom:6px;}
+  .coverage .sub{font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--bronze-bright);}
+  .coverage ul{list-style:none; margin-top:20px;}
+  .coverage li{padding:10px 0; border-top:1px solid var(--line); color:var(--stone); font-size:0.98rem;}
+  .coverage li:first-child{border-top:none; padding-top:0;}
+  @media (max-width:900px){ .coverage{grid-template-columns:1fr;} #service-map{height:460px;} .leaflet-tooltip.town{font-size:0.62rem; padding:2px 5px;} }
 </style>
 </head>
 <body>
@@ -41,43 +56,60 @@
     <span class="breadcrumb"><a href="index.html">Home</a> / Service Area</span>
     <span class="eyebrow" style="display:block; margin-top:22px;">Where We Work</span>
     <h1>Rooted in the South Okanagan-Similkameen.</h1>
-    <p>PMC Build is based locally and works throughout the South Okanagan, with project experience across BC when a project calls for it.</p>
+    <p>Based in Osoyoos and working throughout the South Okanagan and Similkameen, with project experience across Western and Central Canada when the work calls for it.</p>
   </div>
 </section>
 
 <section class="section-border">
   <div class="wrap">
-    <div class="area-detail">
-      <h3>Osoyoos, BC</h3>
-      <p>Construction consulting and project management in Osoyoos, including rural and acreage property improvements and coordination with the municipality's ongoing infrastructure renewal work.</p>
+    <div class="map-wrap">
+      <div id="service-map" role="img" aria-label="Map of the PMC Build service area across the South Okanagan and Similkameen, BC"></div>
+      <div class="map-legend">
+        <span><i class="lg-home"></i>Home base: Osoyoos</span>
+        <span><i class="lg-core"></i>Core service area</span>
+        <span><i class="lg-ext"></i>Extended, project basis</span>
+      </div>
     </div>
-    <div class="area-detail">
-      <h3>Oliver, BC</h3>
-      <p>Renovation planning and project management for homeowners and investment property owners in Oliver, from full interior renovations to targeted property improvements.</p>
-    </div>
-    <div class="area-detail">
-      <h3>Keremeos, BC</h3>
-      <p>Rural property development and construction consulting for acreage owners in Keremeos, including access, site preparation, and outbuilding planning.</p>
-    </div>
-    <div class="area-detail">
-      <h3>Cawston, BC</h3>
-      <p>Rural and agricultural property improvement consulting in Cawston, with attention to the access and site-condition realities of working land.</p>
-    </div>
-    <div class="area-detail">
-      <h3>Rock Creek, BC</h3>
-      <p>Construction project management and rural property development for owners in Rock Creek and the surrounding Boundary region.</p>
-    </div>
-    <div class="area-detail">
-      <h3>Okanagan Falls, BC</h3>
-      <p>Property improvement and renovation planning services for homeowners and investment property owners in Okanagan Falls.</p>
-    </div>
-    <div class="area-detail">
-      <h3>Penticton &amp; Surrounding Area</h3>
-      <p>Construction consulting and owner representation available in the broader Penticton area on a project basis.</p>
-    </div>
-    <div class="area-detail">
-      <h3>Province-Wide, Project-Dependent</h3>
-      <p>PMC Build has managed civil works, retail buildouts, and property improvement projects across BC, Alberta, Manitoba, and Saskatchewan. Larger or specialized projects outside the South Okanagan are considered case by case.</p>
+  </div>
+</section>
+
+<section class="section-border">
+  <div class="wrap">
+    <div class="coverage">
+      <div>
+        <h3>Core Service Area</h3>
+        <span class="sub">South Okanagan &amp; Similkameen</span>
+        <ul>
+          <li>Osoyoos</li>
+          <li>Oliver</li>
+          <li>Okanagan Falls</li>
+          <li>Keremeos</li>
+          <li>Cawston</li>
+          <li>Rock Creek</li>
+          <li>Penticton</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Extended Area</h3>
+        <span class="sub">Considered by project</span>
+        <ul>
+          <li>Princeton</li>
+          <li>Midway &amp; Greenwood</li>
+          <li>Grand Forks</li>
+          <li>Naramata &amp; Summerland</li>
+          <li>Kelowna</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Beyond the Okanagan</h3>
+        <span class="sub">Larger or specialized work</span>
+        <ul>
+          <li>British Columbia</li>
+          <li>Alberta</li>
+          <li>Saskatchewan</li>
+          <li>Manitoba</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -126,6 +158,8 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/service-map.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
